@@ -1,5 +1,6 @@
 require 'sinatra/base'
 require_relative './lib/sitemanager.rb'
+require_relative './lib/database_setup'
 
 class Makersbnb < Sinatra::Base
 
@@ -13,7 +14,9 @@ class Makersbnb < Sinatra::Base
   end
 
   post '/list_property' do
-    Property.new(params[:name], params[:description], params[:price])
+    p params[:name]
+    SiteManager.add_listings(name: params[:name], description: params[:description], price: params[:price])
     redirect '/'
   end
+
 end
