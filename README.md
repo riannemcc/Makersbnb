@@ -2,10 +2,11 @@
 
 # Set-up instructions
 1. Connect to psql in the command line
-2. Create a database - CREATE DATABASE makersbnb;
-3. Connect to the database using the psql command \c makersbnb;
-4. Run the query in migrations/01_create_properties_table.sql
-3. Run the query in migrations/02_create_users_table.sql 
+2. Run the following queries (found in db/migrations) by entering  ```\i (full file path of query)``` in the command line.
+3. Create database - 01_create_database.sql
+4. Create properties table - 02_create_properties_table.sql
+5. Create users table - 03_create_users_table.sql
+6. Update properties to use owner_id foreign key - 04_update_properties_table.sql
 
 # Headline specifications
 - Any signed-up user can list a new space.
