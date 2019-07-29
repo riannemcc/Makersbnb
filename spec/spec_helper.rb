@@ -21,6 +21,14 @@ require 'capybara'
 require 'capybara/rspec'
 require 'rspec'
 require 'simplecov'
+require 'simplecov-console'
+
+require File.join(File.dirname(__FILE__), '..', 'app.rb')
+
+Capybara.app = Makersbnb
+
+SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new([SimpleCov::Formatter::Console])
+SimpleCov.start
 
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
