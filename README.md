@@ -1,5 +1,12 @@
 # CrouchingPythonbnb
 
+# Set-up instructions
+1. Connect to psql in the command line
+2. Create a database - CREATE DATABASE makersbnb;
+3. Connect to the database using the psql command \c makersbnb;
+4. Run the query in migrations/01_create_properties_table.sql
+3. Run the query in migrations/02_create_users_table.sql 
+
 # Headline specifications
 - Any signed-up user can list a new space.
 - Users can list multiple spaces.
@@ -8,6 +15,8 @@
 - Any signed-up user can request to hire any space for one night, and this should be approved by the user that owns that space.
 - Nights for which a space has already been booked should not be available for users to book that space.
 - Until a user has confirmed a booking request, that space can still be booked for that night.
+
+![Imgur](https://i.imgur.com/hxT2G5Y.jpg)
 
 # User Stories
 ```
@@ -23,7 +32,7 @@ I want to be able to add: Name, Desciption & Price Per Night
 ```
 
 ```
-As a user, 
+As a user,
 So that I can list more than one space
 I want to be able to list multiple spaces
 ```
@@ -54,7 +63,7 @@ I want to be able to make spaces unavaible once booking is approved
 
 ```
 As a user,
-So that I can I cannot pick an already booked space 
+So that I can I cannot pick an already booked space
 I want to see only see available spaces
 ```
 
@@ -72,7 +81,7 @@ I want to be able to sign up
 
 ```
 As a user,
-So that I can access the site 
+So that I can access the site
 I want to be able to sign in
 ```
 
@@ -83,5 +92,3 @@ I want to eb able to sign out
 ```
 
 Fin
-
-
