@@ -9,6 +9,8 @@
 - Nights for which a space has already been booked should not be available for users to book that space.
 - Until a user has confirmed a booking request, that space can still be booked for that night.
 
+![Imgur](https://i.imgur.com/hxT2G5Y.jpg)
+
 # User Stories
 ```
 As a user,
