@@ -9,4 +9,5 @@ gem 'rack'
 gem 'rspec'
 gem 'sinatra'
 gem 'simplecov', require: false, group: :test
+gem 'simplecov-console', require: false
 gem 'pg'
