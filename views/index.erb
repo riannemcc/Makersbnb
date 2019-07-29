@@ -1,0 +1,15 @@
+<h1>Welcome to CrouchingPythonBNB</h1>
+
+<form action="/list_property" method="get">
+  <input type="submit" value="List a Space" />
+</form>
+
+<ul>
+<% @properties.each do |property| %>
+<li>
+  <%= property.name %>
+  <%= property.description %>
+  <%= property.price %>
+</li>
+<% end %>
+</ul>
