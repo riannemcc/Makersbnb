@@ -1,15 +1,5 @@
 # CrouchingPythonbnb
 
-# Set-up instructions
-1. Connect to psql in the command line
-2. Follow the migration steps sequentially, running each query (found in db/migrations) by entering:  ```\i (full file path of query)``` in the command line.
-3. Create test database:
-```
-CREATE DATABASE makersbnb_test;
-```
-4. Connect to test database using ```\c makersbnb_test``` in psql.
-5. Follow migration steps 02-08 for the test database.
-
 # Headline specifications
 - Any signed-up user can list a new space.
 - Users can list multiple spaces.
