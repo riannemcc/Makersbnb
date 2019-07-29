@@ -1,6 +1,8 @@
 
 class Property
 
+  attr_reader :name, :description, :price
+
   def initialize(name, description, price)
     @name = name
     @description = description
@@ -11,4 +13,6 @@ class Property
   def available?
     true
   end
+
+
 end
