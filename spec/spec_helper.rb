@@ -12,6 +12,10 @@
 # the additional setup, and require it from the spec files that actually need
 # it.
 
+# Set the environment to "test"
+ENV['RACK_ENV'] = 'test'
+ENV['ENVIRONMENT'] = 'test'
+
 # Require all the testing gems
 require 'capybara'
 require 'capybara/rspec'
