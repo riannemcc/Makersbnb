@@ -6,10 +6,10 @@
 
 <ul>
 <% @properties.each do |property| %>
-<li>
+<a href="/book_property/<%= URI.escape(property.name) %>"><li id="<%= property.name %>">
   <%= property.name %>
   <%= property.description %>
   <%= property.price %>
-</li>
+</li></a>
 <% end %>
 </ul>

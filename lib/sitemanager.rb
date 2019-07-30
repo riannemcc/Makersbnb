@@ -16,6 +16,7 @@ class SiteManager
     properties = Database.query("SELECT * FROM properties;")
     properties.map { |property|
       Property.new(
+        property['id'],
         property['property_name'],
         property['description'],
         property['price']
