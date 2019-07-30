@@ -5,13 +5,13 @@ require_relative './lib/user.rb'
 
 class Makersbnb < Sinatra::Base
 
-  get '/sign_up' do
+  get '/' do
     erb :sign_up
   end
 
   post '/sign_up' do
     if params[:password] != params[:password_confirmation]
-      redirect '/sign_up'
+      redirect '/'
     end
 
     id = User.create(name: params[:name], email: params[:email], password: params[:password])
