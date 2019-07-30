@@ -24,4 +24,8 @@ class SiteManager
     }
   end
 
+  def self.add_booking_request(start_date:, end_date:)
+    Database.query("INSERT INTO bookings (start_date, end_date) VALUES('#{start_date}', '#{end_date}');")
+  end
+
 end
