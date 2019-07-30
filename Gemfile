@@ -11,3 +11,5 @@ gem 'sinatra'
 gem 'simplecov', require: false, group: :test
 gem 'simplecov-console', require: false
 gem 'pg'
+
+gem "launchy", "~> 2.4"
