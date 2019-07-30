@@ -1,7 +1,7 @@
 {
   "RSpec": {
     "coverage": {
-      "/Users/student/Projects/Makersbnb/spec/database_connection_spec.rb": [
+      "/Users/riannemccartney/Projects/Makersbnb/spec/database_connection_spec.rb": [
         1,
         1,
         null,
@@ -19,7 +19,7 @@
         null,
         null
       ],
-      "/Users/student/Projects/Makersbnb/spec/features/add_multiple_properties_spec.rb": [
+      "/Users/riannemccartney/Projects/Makersbnb/spec/features/add_multiple_properties_spec.rb": [
         1,
         1,
         1,
@@ -31,7 +31,7 @@
         null,
         null
       ],
-      "/Users/student/Projects/Makersbnb/spec/features/adding_new_property_spec.rb": [
+      "/Users/riannemccartney/Projects/Makersbnb/spec/features/adding_new_property_spec.rb": [
         1,
         1,
         1,
@@ -43,7 +43,7 @@
         null,
         null
       ],
-      "/Users/student/Projects/Makersbnb/spec/features/index_page_shows_properties_spec.rb": [
+      "/Users/riannemccartney/Projects/Makersbnb/spec/features/index_page_shows_properties_spec.rb": [
         1,
         1,
         null,
@@ -58,7 +58,32 @@
         null,
         null
       ],
-      "/Users/student/Projects/Makersbnb/spec/features/property_booking_request_spec.rb": [
+      "/Users/riannemccartney/Projects/Makersbnb/spec/features/property_booking_request_spec.rb": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        null,
+        null,
+        null,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        null,
+        null,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
         1,
         1,
         1,
@@ -68,7 +93,7 @@
         null,
         null
       ],
-      "/Users/student/Projects/Makersbnb/spec/property_spec.rb": [
+      "/Users/riannemccartney/Projects/Makersbnb/spec/property_spec.rb": [
         1,
         null,
         1,
@@ -77,16 +102,16 @@
         null,
         null
       ],
-      "/Users/student/Projects/Makersbnb/spec/setup_database_spec.rb": [
+      "/Users/riannemccartney/Projects/Makersbnb/spec/setup_database_spec.rb": [
         1,
         null,
         1,
-        8,
+        10,
         null,
-        8,
+        10,
         null
       ],
-      "/Users/student/Projects/Makersbnb/spec/sitemanager_spec.rb": [
+      "/Users/riannemccartney/Projects/Makersbnb/spec/sitemanager_spec.rb": [
         1,
         null,
         1,
@@ -121,7 +146,7 @@
         null,
         null
       ],
-      "/Users/student/Projects/Makersbnb/spec/user_spec.rb": [
+      "/Users/riannemccartney/Projects/Makersbnb/spec/user_spec.rb": [
         1,
         null,
         1,
@@ -129,6 +154,6 @@
         null
       ]
     },
-    "timestamp": 1564484655
+    "timestamp": 1564492805
   }
 }

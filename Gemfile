@@ -13,3 +13,9 @@ gem 'simplecov-console', require: false
 gem 'pg'
 
 gem "launchy", "~> 2.4"
+
+gem "sinatra-flash", "~> 0.3.0"
+
+gem "sinatra-redirect-with-flash", "~> 0.2.1"
+
+gem "rack-flash3", "~> 1.0"

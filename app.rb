@@ -1,8 +1,14 @@
 require 'sinatra/base'
+require 'sinatra/flash'
+require 'sinatra/redirect_with_flash'
+require 'rack-flash'
 require_relative './lib/sitemanager.rb'
 require_relative './lib/database_setup'
 
+
 class Makersbnb < Sinatra::Base
+register Sinatra::Flash
+helpers Sinatra::RedirectWithFlash
 
   get '/' do
     @properties = SiteManager.get_available_listings
@@ -20,6 +26,10 @@ class Makersbnb < Sinatra::Base
   end
 
   get '/book_property/:name' do
-    'Book Manor House'
+    erb :book_property
+  end
+
+  post '/book_property/:name' do
+    redirect '/', notice: 'Booking request submitted!'
   end
 end

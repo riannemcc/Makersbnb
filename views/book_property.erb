@@ -1,0 +1,25 @@
+<h1>Booking Request</h1>
+
+<form action="/book_property/:name" method="post">
+  <label>
+    Name:
+  </label>
+  <input type="name" name="name" required />
+  <label>
+    Email address:
+  </label>
+    <input type="email" name="email" required />
+  <label>
+    Contact number:
+  </label>
+    <input type="number" name="number" required />
+  <label>
+    Start date:
+  </label>
+  <input type="date" name="start" required />
+  <label>
+    End date:
+  </label>
+  <input type="date" name="end" required />
+  <input type="submit" value="Submit" />
+</form>
