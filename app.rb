@@ -19,4 +19,7 @@ class Makersbnb < Sinatra::Base
     redirect '/'
   end
 
+  get '/book_property/:name' do
+    'Book Manor House'
+  end
 end
