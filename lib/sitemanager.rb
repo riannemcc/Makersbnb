@@ -25,10 +25,10 @@ class SiteManager
     }
   end
 
-  def self.add_booking_request(start_date:, end_date:)
+  def self.add_booking_request(property_id:, start_date:, end_date:)
     startdate = Date.strptime(start_date,'%Y-%m-%d')
     enddate = Date.strptime(end_date,'%Y-%m-%d')
-    Database.query("INSERT INTO bookings (start_date, end_date) VALUES('#{startdate}', '#{enddate}');")
+    Database.query("INSERT INTO bookings (property_id, start_date, end_date) VALUES('#{property_id}', '#{startdate}', '#{enddate}');")
   end
 
 end

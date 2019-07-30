@@ -1,6 +1,6 @@
 <h1>Booking Request</h1>
 
-<form action="/book_property/:name" method="post">
+<form action="/book_property" method="post">
   <label>
     Name:
   </label>
@@ -16,10 +16,10 @@
   <label>
     Start date:
   </label>
-  <input type="date" name="start" required />
+  <input type="date" name="start_date" required />
   <label>
     End date:
   </label>
-  <input type="date" name="end" required />
+  <input type="date" name="end_date" required />
   <input type="submit" value="Submit" />
 </form>
