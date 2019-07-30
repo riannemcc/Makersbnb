@@ -1,12 +1,5 @@
 # CrouchingPythonbnb
 
-# Set-up instructions
-1. Connect to psql in the command line
-2. Create a database - CREATE DATABASE makersbnb;
-3. Connect to the database using the psql command \c makersbnb;
-4. Run the query in migrations/01_create_properties_table.sql
-3. Run the query in migrations/02_create_users_table.sql 
-
 # Headline specifications
 - Any signed-up user can list a new space.
 - Users can list multiple spaces.
