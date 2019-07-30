@@ -20,7 +20,6 @@ helpers Sinatra::RedirectWithFlash
   end
 
   post '/list_property' do
-    p params[:name]
     SiteManager.add_listings(name: params[:name], description: params[:description], price: params[:price])
     redirect '/'
   end
@@ -30,6 +29,7 @@ helpers Sinatra::RedirectWithFlash
   end
 
   post '/book_property/:name' do
+    
     redirect '/', notice: 'Booking request submitted!'
   end
 end

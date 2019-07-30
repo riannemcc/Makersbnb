@@ -32,7 +32,7 @@ describe SiteManager do
   end
 
   describe '.add_bookings' do
-    it 'add bookings to the database' do
+    it 'adds bookings to the database' do
       site_manager = SiteManager.add_booking_request( start_date: "2019-08-01", end_date: "2019-08-29")
 
       bookings = Database.query("SELECT * FROM bookings;")

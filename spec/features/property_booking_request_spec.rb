@@ -16,7 +16,7 @@ feature 'Booking a property' do
     expect(page).to have_button('Submit')
   end
 
-  scenario 'A user receives a message that booking has been received' do
+  scenario 'A user can submit a booking request' do
     Database.query("INSERT INTO properties (property_name, description, price) VALUES('Manor House', 'Lovely house', 200);")
     visit('/')
     click_link('Manor House')
@@ -30,4 +30,4 @@ feature 'Booking a property' do
     click_button('Submit')
     expect(page).to have_content 'Welcome'
   end
-end 
+end

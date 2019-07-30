@@ -1,6 +1,7 @@
 require_relative 'property'
 require_relative 'user'
 require_relative 'database'
+require 'date'
 
 class SiteManager
 
@@ -25,7 +26,9 @@ class SiteManager
   end
 
   def self.add_booking_request(start_date:, end_date:)
-    Database.query("INSERT INTO bookings (start_date, end_date) VALUES('#{start_date}', '#{end_date}');")
+    startdate = Date.strptime(start_date,'%Y-%m-%d')
+    enddate = Date.strptime(end_date,'%Y-%m-%d')
+    Database.query("INSERT INTO bookings (start_date, end_date) VALUES('#{startdate}', '#{enddate}');")
   end
 
 end
