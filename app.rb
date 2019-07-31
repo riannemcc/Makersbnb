@@ -60,7 +60,7 @@ class Makersbnb < Sinatra::Base
   end
 
   post '/list_property' do
-    SiteManager.add_listings(name: params[:name], description: params[:description], price: params[:price])
+    SiteManager.add_listings(owner_id: session['id'], name: params[:name], description: params[:description], price: params[:price])
     redirect '/index'
   end
 
@@ -74,7 +74,13 @@ class Makersbnb < Sinatra::Base
   end
 
   post '/book_property' do
-    SiteManager.add_booking_request(property_id: session['property_id'], start_date: params[:start_date], end_date: params[:end_date])
+    SiteManager.add_booking_request(renter_id: session['id'], property_id: session['property_id'], start_date: params[:start_date], end_date: params[:end_date])
     redirect '/', notice: 'Booking request submitted!'
+  end
+
+  get '/requests' do
+    @renter_requests = SiteManager.get_renter_booking_requests(id: session['id'])
+    @owner_requests = SiteManager.get_owner_booking_requests(id: session['id'])
+    erb :requests
   end
 end
