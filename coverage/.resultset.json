@@ -127,9 +127,9 @@
         1,
         null,
         1,
-        15,
+        16,
         null,
-        15,
+        16,
         null
       ],
       "/Users/riannemccartney/Projects/Makersbnb/spec/sitemanager_spec.rb": [
@@ -197,9 +197,17 @@
         1,
         null,
         null,
+        null,
+        1,
+        1,
+        1,
+        null,
+        1,
+        null,
+        null,
         null
       ]
     },
-    "timestamp": 1564577051
+    "timestamp": 1564577472
   }
 }
