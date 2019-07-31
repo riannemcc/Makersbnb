@@ -7,7 +7,7 @@ feature 'sign up' do
     fill_in('password_confirmation', with: 'password123')
     click_button('Sign up')
 
-    expect(page).to have_content "Welcome to CrouchingPythonBNB"
+    expect(page).to have_content "Welcome to Crouching Python B'n'B"
   end
 end
 
@@ -18,7 +18,7 @@ feature 'Authentication' do
         fill_in('email', with: 'test@example.com')
         fill_in('password', with: 'password123')
         click_button('Sign in')
-        expect(page).to have_content 'Welcome to CrouchingPythonBNB'
+        expect(page).to have_content "Welcome to Crouching Python B'n'B"
       end
 
     scenario 'a user sees an error if they get their email wrong' do
@@ -28,7 +28,7 @@ feature 'Authentication' do
         fill_in('password', with: 'password123')
         click_button('Sign in')
 
-        expect(page).not_to have_content 'Welcome to CrouchingPythonBNB'
-        expect(page).to have_content 'Sign in to CrouchingPythonBNB'
+        expect(page).not_to have_content "Welcome to Crouching Python B'n'B"
+        expect(page).to have_content "Sign in to Crouching Python B'n'B"
     end
 end

@@ -1,4 +1,5 @@
 require 'sitemanager'
+require 'property'
 
 describe SiteManager do
 
@@ -33,7 +34,8 @@ describe SiteManager do
 
   describe '.add_bookings' do
     it 'adds bookings to the database' do
-      site_manager = SiteManager.add_booking_request( start_date: "2019-08-01", end_date: "2019-08-29")
+      property_id = SiteManager.add_listings(name: "Hello", description: "Haha", price: "1000")
+      site_manager = SiteManager.add_booking_request( property_id: property_id.first['id'], start_date: "2019-08-01", end_date: "2019-08-29")
 
       bookings = Database.query("SELECT * FROM bookings;")
 
