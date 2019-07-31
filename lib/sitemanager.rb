@@ -10,7 +10,7 @@ class SiteManager
   # end
 
   def self.add_listings(name:, description:, price:)
-    Database.query("INSERT INTO properties (property_name, description, price) VALUES('#{name}', '#{description}', '#{price}');")
+    Database.query("INSERT INTO properties (property_name, description, price) VALUES('#{name}', '#{description}', '#{price}') RETURNING id;")
   end
 
   def self.get_available_listings
