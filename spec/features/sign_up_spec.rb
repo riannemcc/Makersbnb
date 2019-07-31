@@ -10,3 +10,25 @@ feature 'sign up' do
     expect(page).to have_content "Welcome to CrouchingPythonBNB"
   end
 end
+
+feature 'Authentication' do
+      scenario 'a user can sign in' do
+        User.create(name: 'Joshy', email: 'test@example.com', password: 'password123')
+        visit '/sign_in'
+        fill_in('email', with: 'test@example.com')
+        fill_in('password', with: 'password123')
+        click_button('Sign in')
+        expect(page).to have_content 'Welcome to CrouchingPythonBNB'
+      end
+
+    scenario 'a user sees an error if they get their email wrong' do
+        User.create(name: 'Joshy', email: 'test@example.com', password: 'password123')
+        visit '/sign_in'
+        fill_in('email', with: 'test@example.commmm')
+        fill_in('password', with: 'password123')
+        click_button('Sign in')
+
+        expect(page).not_to have_content 'Welcome to CrouchingPythonBNB'
+        expect(page).to have_content 'Sign in to CrouchingPythonBNB'
+    end
+end
