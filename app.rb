@@ -2,8 +2,11 @@ require 'sinatra/base'
 require_relative './lib/sitemanager.rb'
 require_relative './lib/database_setup'
 require_relative './lib/user.rb'
+require 'sinatra/flash'
 
 class Makersbnb < Sinatra::Base
+  enable :sessions
+  register Sinatra::Flash
 
   get '/' do
     erb :sign_up
@@ -13,9 +16,33 @@ class Makersbnb < Sinatra::Base
     if params[:password] != params[:password_confirmation]
       redirect '/'
     end
-
+    
     id = User.create(name: params[:name], email: params[:email], password: params[:password])
+    if id == -1
+      flash[:notice] = 'Email is already in use'
+      redirect '/'
+    end
+    session['id'] = id
     redirect '/index'
+  end
+
+  get '/sign_in' do
+    erb :'/sign_in'
+  end
+
+  post '/sign_in' do
+    id = User.authenticate(email: params[:email], password: params[:password])
+    if id == -1
+      flash[:notice] = 'Please check your email and password.'
+      redirect '/sign_in'
+    end
+    session['id'] = id
+    redirect '/index'
+  end
+
+  get '/sign_out' do
+    session.clear
+    redirect '/'
   end
 
   get '/index' do
