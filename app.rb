@@ -75,12 +75,29 @@ class Makersbnb < Sinatra::Base
 
   post '/book_property' do
     SiteManager.add_booking_request(renter_id: session['id'], property_id: session['property_id'], start_date: params[:start_date], end_date: params[:end_date])
-    redirect '/', notice: 'Booking request submitted!'
+    redirect '/index', notice: 'Booking request submitted!'
   end
 
   get '/requests' do
     @renter_requests = SiteManager.get_renter_booking_requests(id: session['id'])
     @owner_requests = SiteManager.get_owner_booking_requests(id: session['id'])
     erb :requests
+  end
+
+  post '/request' do
+    session['request_id'] = params[:request_id]
+    p "Request POST #{session['request_id']}"
+    redirect '/request'
+  end
+
+  get '/request' do
+    @booking_request = SiteManager.get_owner_booking_requests(id: session['id'], request_id: session[:request_id] ).first
+    @other_requests = SiteManager.get_property_booking_requests(id: session['id'], property_id: @booking_request['property_id'])
+    erb :request
+  end
+
+  post '/handle_request' do
+    SiteManager.update_approval_status(request_id: session['request_id'], response: params[:response])
+    redirect '/requests'
   end
 end

@@ -29,21 +29,41 @@ class SiteManager
     pending = 'pending'
     startdate = Date.strptime(start_date,'%Y-%m-%d')
     enddate = Date.strptime(end_date,'%Y-%m-%d')
-    p owner_id = Database.query("SELECT owner_id FROM properties WHERE id = '#{property_id}';").first['owner_id']
+    owner_id = Database.query("SELECT owner_id FROM properties WHERE id = '#{property_id}';").first['owner_id']
     Database.query("INSERT INTO bookings (approved, owner_id, renter_id, property_id, start_date, end_date) VALUES('#{pending}', '#{owner_id}', '#{renter_id}', '#{property_id}', '#{startdate}', '#{enddate}');")
   end
 
   def self.get_renter_booking_requests(id:)
-    Database.query("SELECT properties.property_name, to_char(bookings.start_date::timestamp, 'DD-MM-YYYY') AS start_date, to_char(bookings.end_date::timestamp, 'DD-MM-YYYY') AS end_date, bookings.approved FROM bookings
+    Database.query("SELECT properties.id, properties.property_name, to_char(bookings.start_date::timestamp, 'DD-MM-YYYY') AS start_date, to_char(bookings.end_date::timestamp, 'DD-MM-YYYY') AS end_date, bookings.approved FROM bookings
     INNER JOIN properties
     ON bookings.property_id = properties.id
     WHERE renter_id = '#{id}';")
   end
 
-  def self.get_owner_booking_requests(id:)
-    Database.query("SELECT properties.property_name, to_char(bookings.start_date::timestamp, 'DD-MM-YYYY') AS start_date, to_char(bookings.end_date::timestamp, 'DD-MM-YYYY') AS end_date, bookings.approved FROM bookings
+  def self.get_owner_booking_requests(id:, request_id: '')
+    request_filter = request_id == '' ? '' : " AND bookings.id = '#{request_id}'"
+    p "#{id} #{request_filter}"
+      Database.query("SELECT users.name, users.email_address, bookings.id AS booking_id, properties.id AS property_id, properties.property_name, to_char(bookings.start_date::timestamp, 'DD-MM-YYYY') AS start_date, to_char(bookings.end_date::timestamp, 'DD-MM-YYYY') AS end_date, bookings.approved FROM bookings
+      INNER JOIN users
+      ON bookings.renter_id = users.id
       INNER JOIN properties
       ON bookings.property_id = properties.id
-      WHERE bookings.owner_id = '#{id}';")
+      WHERE bookings.owner_id = '#{id}'#{request_filter};")
+  end
+
+  def self.get_property_booking_requests(id:, property_id:)
+    Database.query("SELECT users.name, users.email_address, properties.id, properties.property_name, to_char(bookings.start_date::timestamp, 'DD-MM-YYYY') AS start_date, to_char(bookings.end_date::timestamp, 'DD-MM-YYYY') AS end_date, bookings.approved FROM bookings
+      INNER JOIN users
+      ON bookings.renter_id = users.id
+      INNER JOIN properties
+      ON bookings.property_id = properties.id
+      WHERE bookings.owner_id = '#{id}' AND bookings.property_id = '#{property_id}';")
+  end
+
+  def self.update_approval_status(request_id:, response:)
+    response = response == "Reject" ? "Rejected" : response
+    request_range = Database.query("UPDATE bookings SET approved = '#{response}' WHERE id = '#{request_id}' RETURNING #{tstzrange(start_date,end_date,'[)')};").first
+    return if response == "Rejected"
+   Database.query("UPDATE bookings SET approved = 'Rejected' WHERE (start_date, end_date) OVERLAPS #{request_range}")
   end
 end
