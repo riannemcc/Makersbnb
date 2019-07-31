@@ -1,23 +1,44 @@
-<h1>Welcome to Crouching Python B'n'B</h1>
+<!DOCTYPE html>
 
-<form action="/sign_out" method="get">
-  <input type="submit" value="sign_out" />
-</form>
+<html>
+    <head>
+      <link rel="stylesheet" type="text/css" href="style.css" />
+      <link href="https://fonts.googleapis.com/css?family=Pacifico&display=swap" rel="stylesheet">
+    </head>
+      <body>
+        <div class="myDiv">
+          <div class="bg"></div>
+          <div>
+            <h1>Welcome to Crouching Python B'n'B</h1>
+          </div>
 
-<form action="/list_property" method="get">
-  <input type="submit" value="List a Space" />
-</form>
+            <div>
+              <form action="/sign_out" method="get">
+                <input class="button" type="submit" value="Log out" />
+              </form>
+            </div>
 
-<ul>
-<% @properties.each do |property| %>
-<li id="<%= property.name %>">
-<form action="/book_page_request" method="post">
-  <input type="hidden" name="property_id" value="<%= property.id %>">
-  <input type="submit" value="
-  <%= property.name %>
-  <%= property.description %>
-  <%= property.price %>">
-  </form>
-</li>
-<% end %>
-</ul>
+            <div><center>
+              <form action="/list_property" method="get">
+                <input class="buttonTwo" type="submit" value="List a Space" />
+              </form>
+            </div>
+
+            <div>
+              <ul>
+              <% @properties.each do |property| %>
+              <li id="<%= property.name %>">
+              <p><form action="/book_page_request" method="post">
+                <input type="hidden" name="property_id" value="<%= property.id %>">
+                <input type="submit" value="
+                <%= property.name %>
+                <%= property.description %>
+                <%= property.price %>">
+                </form>
+              </li>
+              <% end %>
+              </ul>
+            </div>
+        </div>
+    </body>
+</html>

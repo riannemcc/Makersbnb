@@ -1,28 +1,35 @@
-<head>
-	<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
-	<script type='text/javascript'>
-		$(document).ready(function() {
-			function explode(){
-  				$(".notice").attr("hidden",true);
-			}
-			setTimeout(explode, 2000);
-		})
-	</script>
-</head>
 
-<h1 align="center">Sign in to CrouchingPythonBNB</h1>
-<h3>
- <div id='flash' class='notice'>
- <%= flash[:notice] %>
-</div>
-</h3>
-<div align="center">
-<form action="/sign_in" method="post">
-  <label>Email:</label>
-<input type="email" name="email" />
-  <label>Password:</label>
-<input type="password" name="password" />
-  <input type="submit" value="Sign in" />
-</form>
-</div>
-
+	<html>
+		<head>
+			<link rel="stylesheet" type="text/css" href="style.css" />
+			<link href="https://fonts.googleapis.com/css?family=Pacifico&display=swap" rel="stylesheet" />
+					<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+					<script type='text/javascript'>
+						$(document).ready(function() {
+							function explode(){
+				  				$(".notice").attr("hidden",true);
+							}
+							setTimeout(explode, 2000);
+						})
+					</script>
+		</head>
+			<body>
+				<div class="myDiv">
+					<div class="bg"></div>
+					<h1 align="center">Crouching Python B'n'B</h1>
+					<h2>Sign in!</h2> 
+					<h3>
+					 <div id='flash' class='notice'>
+					 <%= flash[:notice] %>
+					</div>
+					</h3>
+					<div align="center">
+					<form action="/sign_in" method="post">
+					<p><input placeholder="email" type="email" name="email" />
+					<p><input placeholder="password" type="password" name="password" />
+					<p><input class="buttonThree" type="submit" value="Sign in" />
+					</form>
+					</div>
+				</div>
+			</body>
+</html>
