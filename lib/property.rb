@@ -1,9 +1,10 @@
 
 class Property
 
-  attr_reader :name, :description, :price
+  attr_reader :id, :name, :description, :price
 
-  def initialize(name, description, price)
+  def initialize(id, name, description, price)
+    @id = id
     @name = name
     @description = description
     @price = price

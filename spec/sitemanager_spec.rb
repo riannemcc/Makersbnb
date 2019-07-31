@@ -30,4 +30,16 @@ describe SiteManager do
       expect(properties.first["price"]).to eq '1000'
     end
   end
+
+  describe '.add_bookings' do
+    it 'adds bookings to the database' do
+      site_manager = SiteManager.add_booking_request( start_date: "2019-08-01", end_date: "2019-08-29")
+
+      bookings = Database.query("SELECT * FROM bookings;")
+
+      # expect(bookings.first["property_id"]).to eq property.id
+      expect(bookings.first["start_date"]).to eq '2019-08-01'
+      expect(bookings.first["end_date"]).to eq '2019-08-29'
+    end
+  end
 end

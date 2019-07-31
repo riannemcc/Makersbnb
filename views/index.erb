@@ -1,4 +1,4 @@
-<h1>Welcome to CrouchingPythonBNB</h1>
+<h1>Welcome to Crouching Python B'n'B</h1>
 
 <form action="/list_property" method="get">
   <input type="submit" value="List a Space" />
@@ -6,10 +6,14 @@
 
 <ul>
 <% @properties.each do |property| %>
-<li>
+<li id="<%= property.name %>">
+<form action="/book_page_request" method="post">
+  <input type="hidden" name="property_id" value="<%= property.id %>">
+  <input type="submit" value="
   <%= property.name %>
   <%= property.description %>
-  <%= property.price %>
+  <%= property.price %>">
+  </form>
 </li>
 <% end %>
 </ul>
