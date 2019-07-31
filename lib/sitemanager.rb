@@ -61,9 +61,9 @@ class SiteManager
   end
 
   def self.update_approval_status(request_id:, response:)
-    response = response == "Reject" ? "Rejected" : response
-    request_range = Database.query("UPDATE bookings SET approved = '#{response}' WHERE id = '#{request_id}' RETURNING #{tstzrange(start_date,end_date,'[)')};").first
+    response = response == "Reject" ? "Rejected" : "Confirmed"
+    request_range = Database.query("UPDATE bookings SET approved = '#{response}' WHERE id = '#{request_id}' RETURNING start_date, end_date;").first
     return if response == "Rejected"
-   Database.query("UPDATE bookings SET approved = 'Rejected' WHERE (start_date, end_date) OVERLAPS #{request_range}")
+    Database.query("UPDATE bookings SET approved = 'Rejected' WHERE (id != '#{request_id}' AND (bookings.start_date, bookings.end_date) OVERLAPS (DATE '#{request_range['start_date']}', DATE '#{request_range['end_date']}'));")
   end
 end
