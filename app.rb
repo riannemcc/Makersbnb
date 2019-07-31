@@ -1,12 +1,17 @@
 require 'sinatra/base'
+require 'sinatra/flash'
+require 'sinatra/redirect_with_flash'
+require 'rack-flash'
 require_relative './lib/sitemanager.rb'
 require_relative './lib/database_setup'
 require_relative './lib/user.rb'
 require 'sinatra/flash'
 
+
 class Makersbnb < Sinatra::Base
   enable :sessions
   register Sinatra::Flash
+  helpers Sinatra::RedirectWithFlash
 
   get '/' do
     erb :sign_up
@@ -16,7 +21,7 @@ class Makersbnb < Sinatra::Base
     if params[:password] != params[:password_confirmation]
       redirect '/'
     end
-    
+
     id = User.create(name: params[:name], email: params[:email], password: params[:password])
     if id == -1
       flash[:notice] = 'Email is already in use'
@@ -59,4 +64,17 @@ class Makersbnb < Sinatra::Base
     redirect '/index'
   end
 
+  post '/book_page_request' do
+    session['property_id'] = params[:property_id]
+    redirect "/book_property"
+  end
+
+  get '/book_property' do
+    erb :book_property
+  end
+
+  post '/book_property' do
+    SiteManager.add_booking_request(property_id: session['property_id'], start_date: params[:start_date], end_date: params[:end_date])
+    redirect '/', notice: 'Booking request submitted!'
+  end
 end
