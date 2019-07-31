@@ -12,6 +12,8 @@ gem 'simplecov', require: false, group: :test
 gem 'simplecov-console', require: false
 gem 'pg'
 
+gem "bcrypt", "~> 3.1"
+
 gem "launchy", "~> 2.4"
 
 gem "sinatra-flash", "~> 0.3.0"

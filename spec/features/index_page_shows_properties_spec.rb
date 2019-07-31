@@ -6,7 +6,7 @@ feature 'Testing index page' do
 
     Database.query("INSERT INTO properties (property_name, description, price) VALUES('Manor House', 'Lovely house', 200);")
     Database.query("INSERT INTO properties (property_name, description, price) VALUES('Mega Pad', 'Banging', 400);")
-    visit('/')
+    visit('/index')
     expect(page).to have_content 'Manor House'
     expect(page).to have_content 'Mega Pad'
   end
