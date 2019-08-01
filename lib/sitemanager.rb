@@ -6,8 +6,9 @@ require 'date'
 class SiteManager
 
   def self.add_listings(owner_id:, name:, description:, price:)
-    Database.query("INSERT INTO properties (owner_id, property_name, description, price) VALUES('#{owner_id}','#{name}', '#{description}', '#{price}');")
-
+    Database.query("INSERT INTO properties (owner_id, property_name, description, price) VALUES('#{owner_id}','#{name}', '#{description}', '#{price}') RETURNING id;")
+  end
+  
   def self.get_available_listings
     properties = Database.query("SELECT * FROM properties;")
     properties.map { |property|
