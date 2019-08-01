@@ -1,36 +1,36 @@
 <h1>Owner Requests</h1>
-<ul>
-<% @owner_requests.each do |request| %>
-<li id="<%= request['id'] %>">
-<form action="/request" method="post">
-  <input type="hidden" name="request_id" value="<%= request['booking_id'] %>">
-  <input type="submit" value="
-  <%= request['property_name'] %>
-  <%= request['start_date'] %>
-  <%= request['end_date'] %>
-  <%= request['approved'] %>
-  ">
-  </form>
-</li>
-<% end %>
-</ul>
+  <ul>
+  <% @owner_requests.each do |request| %>
+  <li id="<%= request['id'] %>">
+    <form action="/request" method="post">
+      <input type="hidden" name="request_id" value="<%= request['booking_id'] %>">
+      <input type="submit" value="
+      <%= request['property_name'] %>
+      <%= request['start_date'] %>
+      <%= request['end_date'] %>
+      <%= request['approved'] %>
+      ">
+      </form>
+  </li>
+  <% end %>
+  </ul>
 <br>
 <br>
-<h1>Renter Requests</h1>
-<ul>
-<% @renter_requests.each do |request| %>
-<li id="<%= request['id'] %>">
-<form action="/book_page_request" method="post">
-  <input type="hidden" name="request_id" value="<%= request['id'] %>">
-  <input type="submit" value="
-  <%= request['property_name'] %>
-  <%= request['start_date'] %>
-  <%= request['end_date'] %>
-  <%= request['approved'] %>
-  ">
-  </form>
-</li>
-<% end %>
-</ul>
+    <h1>Renter Requests</h1>
+    <ul>
+    <% @renter_requests.each do |request| %>
+    <li id="<%= request['id'] %>">
+      <form action="/book_page_request" method="post">
+        <input type="hidden" name="request_id" value="<%= request['id'] %>">
+        <input type="submit" value="
+        <%= request['property_name'] %>
+        <%= request['start_date'] %>
+        <%= request['end_date'] %>
+        <%= request['approved'] %>
+        ">
+      </form>
+    </li>
+    <% end %>
+    </ul>
 <br>
 <br>
