@@ -1,0 +1,18 @@
+<h1>Request Details</h1>
+
+<body>
+  <h3>Property Name:<%= @booking_request['property_name'] %></h3>
+  <p>
+  Dates Requested:
+  <%= @booking_request['start_date'] %> to <%= @booking_request['end_date'] %>
+</p>
+  <p>
+  Description:
+  <% @booking_request['description'] %>
+</p>
+	<p>
+  Price:
+  <% @booking_request['price'] %>
+</p>
+  <a href="/requests.erb" >
+</body>

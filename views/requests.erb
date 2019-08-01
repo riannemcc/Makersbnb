@@ -20,7 +20,7 @@
 <ul>
 <% @renter_requests.each do |request| %>
 <li id="<%= request['id'] %>">
-<form action="/book_page_request" method="post">
+<form action="/request_details" method="post">
   <input type="hidden" name="request_id" value="<%= request['id'] %>">
   <input type="submit" value="
   <%= request['property_name'] %>
