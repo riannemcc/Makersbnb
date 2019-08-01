@@ -27,8 +27,7 @@ feature 'Authentication' do
         fill_in('email', with: 'test@example.commmm')
         fill_in('password', with: 'password123')
         click_button('Sign in')
-
         expect(page).not_to have_content "Welcome to Crouching Python B'n'B"
-        expect(page).to have_content "Sign in to Crouching Python B'n'B"
+        expect(page).to have_content "Please check your email and password."
     end
 end
