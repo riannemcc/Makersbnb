@@ -8,11 +8,14 @@
 </p>
   <p>
   Description:
-  <% @booking_request['description'] %>
+  <%= @booking_request['description'] %>
 </p>
 	<p>
   Price:
-  <% @booking_request['price'] %>
+  <%= @booking_request['price'] %>
+</p>
+  <p>
+  <img src="<%= @booking_request['image'] %>">
 </p>
   <a href="/requests.erb" >
 </body>

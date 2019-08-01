@@ -92,7 +92,7 @@ class SiteManager
   end
 
   def self.get_request_details(request_id:)
-    p d = Database.query("SELECT bookings.start_date, bookings.end_date, properties.property_name, properties.description, properties.price, users.name
+    p d = Database.query("SELECT properties.image, bookings.start_date, bookings.end_date, properties.property_name, properties.description, properties.price, users.name
       FROM bookings
       INNER JOIN users
       ON bookings.owner_id = users.id
