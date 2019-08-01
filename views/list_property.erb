@@ -1,8 +1,19 @@
-<h1>List your property</h1>
-
-<form action="/list_property" method="post">
-  <input type="text" placeholder="name" name="name"/>
-  <input type="textarea" placeholder="description" name="description" />
-  <input type="number" placeholder="£" name="price" />
-  <input type="submit" value="Enter" />
-</form>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="style.css" />
+		<link href="https://fonts.googleapis.com/css?family=Pacifico&display=swap" rel="stylesheet" />
+      <body>
+        <div class="myDiv">
+					<div class="bg"></div>
+          <h1>List your property</h1>
+      <div align="center">
+        <form action="/list_property" method="post">
+          <p><input type="text" placeholder="property name" name="name"/>
+          <p><input type="textarea" placeholder="description" name="description" />
+          <p><input type="number" placeholder="£ per night" name="price" />
+          <p><input class="buttonThree" type="submit" value="Submit" />
+        </form>
+      </div>
+      </div>
+      </body>
+</html>

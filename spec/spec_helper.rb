@@ -24,6 +24,7 @@ require 'simplecov'
 require 'simplecov-console'
 puts "this is #{File.dirname(__FILE__)}"
 require File.join(File.dirname(__FILE__), '..', 'app.rb')
+require 'features/web_helpers'
 
 Capybara.app = Makersbnb
 
