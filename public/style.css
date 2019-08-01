@@ -43,6 +43,14 @@ h2 {
   position: relative;
 }
 
+h3 {
+  font-size: 20px;
+  font-family: 'Poppins', sans-serif;
+  text-align: center;
+  color: #29384f;
+  position: relative;
+}
+
 .myDiv {
     /* position: absolute; */
     z-index: 1;
@@ -60,6 +68,7 @@ h2 {
     /* width: 600px;
     height: 600px; */
     background-position: center;
+    background-attachment: inherit;
     background-repeat: no-repeat;
     background-size: cover;
     height: 100%;
@@ -139,4 +148,41 @@ textarea {
   list-style-type: none;
   margin: padding: 0;
   padding: 0;
+}
+
+#all_prop {
+  margin-top: 20px;
+  overflow-y: scroll;
+  height:600px;
+}
+
+#list-element {
+ background-color: white;
+ border-radius: 12px;
+ width: 60%;
+ margin-top: 30px;
+ margin-bottom: 10px;
+ padding-top: 30px;
+ padding-left: 30px;
+ padding-right: 30px;
+ border-style: solid;
+}
+
+#space-footer {
+ margin-top: -5%;
+ padding-top: 0px;
+ padding-bottom: 5px;
+ padding-left: 5px;
+ padding-right: 5px;
+ text-align: center;
+}
+
+img {
+  margin-top: 20px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 80%;
+  max-height: 80%;
+  border-radius: 12px;
 }
