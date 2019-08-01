@@ -11,15 +11,16 @@ feature 'Booking a property' do
   scenario 'A user can fill in a form with their request details' do
     Database.query("INSERT INTO properties (property_name, description, price) VALUES('Manor House', 'Lovely house', 200);")
     sign_up
-    click_button('Manor House')
-    visit("/book_property")
+    list_property
+    click_button('Granny Annexe')
     expect(page).to have_button('Submit')
   end
 
   scenario 'A user can submit a booking request' do
     Database.query("INSERT INTO properties (property_name, description, price) VALUES('Manor House', 'Lovely house', 200);")
     sign_up
+    list_property
     book_property
-    expect(page).to have_content 'Sign up'
+    expect(page).to have_button('Granny Annexe')
   end
 end
