@@ -4,42 +4,47 @@
     <head>
       <link rel="stylesheet" type="text/css" href="style.css" />
       <link href="https://fonts.googleapis.com/css?family=Pacifico&display=swap" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
     </head>
       <body>
         <div class="myDiv">
           <div class="bg"></div>
+
+          <div class="topnav">
+  				  <a class="active" href="/">Home</a>
+  				  <a href="/sign_out">Log out</a>
+            <a href="/requests">See booking requests</a>
+  				</div>
           <div>
             <h1>Welcome to Crouching Python B'n'B</h1>
           </div>
 
-<a href="/requests" align="right">See Requests</a>
-
-            <div>
-              <form action="/sign_out" method="get">
-                <input class="button" type="submit" value="Log out" />
-              </form>
-            </div>
             <div><center>
               <form action="/list_property" method="get">
-                <input class="buttonTwo" type="submit" value="List a Space" />
+                <input class="buttonTwo" type="submit" value="List a Property" />
               </form>
             </div>
 
-            <div>
-              <ul>
-              <% @properties.each do |property| %>
-              <li id="<%= property.name %>">
-              <p><form action="/book_page_request" method="post">
-                <input type="hidden" name="property_id" value="<%= property.id %>">
-                <input type="submit" value="
-                <%= property.name %>
-                <%= property.description %>
-                <%= property.price %>">
-                </form>
-              </li>
-              <% end %>
-              </ul>
-            </div>
+            <div id="all_prop">
+            <% @properties.each do |property| %>
+              <center><div id="list-element">
+                <div id="property-image">
+                  <img src="<%= property.image %>">
+                </div>
+                <div id="space-footer">
+                  <h2><%= "#{ property.name }" %></h2>
+                  <span id="description">
+                    <h3><%= "#{ property.description }" %></span><p><h3>
+                  <form action="/book_page_request" method="post">
+                    <input type="hidden" name="property_id" value="<%= property.id %>">
+                    <center><input type="submit" value="View"/>
+                  </form>
+                  <br>
+                </div>
+
+              </div>
+            <% end %>
         </div>
+      </div>
     </body>
-</html>
+  </html>

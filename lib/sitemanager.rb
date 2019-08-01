@@ -5,10 +5,19 @@ require 'date'
 
 class SiteManager
 
-  def self.add_listings(owner_id:, name:, description:, price:)
-    Database.query("INSERT INTO properties (owner_id, property_name, description, price) VALUES('#{owner_id}','#{name}', '#{description}', '#{price}') RETURNING id;")
+  def self.add_listings(owner_id:, name:, description:, price:, image:)
+    if name.include?("'")
+      index = name.index("'")
+      name.insert(index,"'")
+    end
+
+    if description.include?("'")
+      index = description.index("'")
+      description.insert(index,"'")
+    end
+    Database.query("INSERT INTO properties (owner_id, property_name, description, price, image) VALUES('#{owner_id}','#{name}', '#{description}', '#{price}', '#{image}') RETURNING id;")
   end
-  
+
   def self.get_available_listings
     properties = Database.query("SELECT * FROM properties;")
     properties.map { |property|
@@ -16,7 +25,8 @@ class SiteManager
         property['id'],
         property['property_name'],
         property['description'],
-        property['price']
+        property['price'],
+        property['image']
       )
     }
   end
@@ -83,7 +93,7 @@ class SiteManager
 
   def self.get_request_details(request_id:)
     p d = Database.query("SELECT properties.image, bookings.start_date, bookings.end_date, properties.property_name, properties.description, properties.price, users.name
-      FROM bookings 
+      FROM bookings
       INNER JOIN users
       ON bookings.owner_id = users.id
       INNER JOIN properties

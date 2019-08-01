@@ -1,8 +1,9 @@
+
 <head>
   <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   <link rel="stylesheet" type="text/css" href="style.css" />
 	<link href="https://fonts.googleapis.com/css?family=Pacifico&display=swap" rel="stylesheet" />
-  <!-- <link rel="stylesheet" href="/resources/demos/style.css"> -->
+  <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   <%= include_gon %>
@@ -30,14 +31,19 @@
 <body>
   <div class="myDiv">
     <div class="bg"></div>
-<h1>Booking Request</h1>
 
+    <div class="topnav">
+      <a class="active" href="/">Home</a>
+      <a href="/sign_out">Log out</a>
+      <a href="/index">Back</a>
+    </div>
+<h1>Booking Request</h1>
       <div align="center"><form action="/book_property" method="post">
           <p><input placeholder="name" type="name" name="name" required />
           <p><input placeholder="email" type="email" name="email" required />
           <p><input placeholder="number" name="number" required />
           <p><input type="text" placeholder="start date" name="start_date" autocomplete="off" id="start_date" required />
-          <p><input tyep="text" placeholder="end date" name="end_date" autocomplete="off" id="end_date" required />
+          <p><input type="text" placeholder="end date" name="end_date" autocomplete="off" id="end_date" required />
           <p><input class="buttonThree" type="submit" value="Submit" />
         </form></div>
     </body>
