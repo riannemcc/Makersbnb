@@ -72,8 +72,9 @@ class Makersbnb < Sinatra::Base
   end
 
   get '/book_property' do
-  @bookings = SiteManager.get_confirmed_booking_requests(id: session['property_id'])
-  gon.bookings = @bookings
+    p session['property_id']
+  gon.bookings = SiteManager.get_confirmed_booking_requests(id: session['property_id'])
+  p " gon: #{gon.bookings}"
     erb :book_property
   end
 
@@ -90,7 +91,6 @@ class Makersbnb < Sinatra::Base
 
   post '/request' do
     session['request_id'] = params[:request_id]
-    "Request POST #{session['request_id']}"
     redirect '/request'
   end
 
@@ -103,5 +103,15 @@ class Makersbnb < Sinatra::Base
   post '/handle_request' do
     SiteManager.update_approval_status(request_id: session['request_id'], response: params[:response])
     redirect '/requests'
+  end
+
+  post '/request_details' do
+    session['request_id'] = params[:request_id]
+    redirect '/request_details'
+  end
+
+  get '/request_details' do
+    @booking_request = SiteManager.get_request_details(request_id: session['request_id'])
+    erb :request_details
   end
 end
