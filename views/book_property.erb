@@ -12,11 +12,11 @@
     dateRange = gon.bookings
 
     $( function() {
-      $( "#start" ).datepicker({
+      $( "#start_date" ).datepicker({
         dateFormat : 'mm-dd-yy',
        beforeShowDay: disableDates
       });
-      $( "#end" ).datepicker({
+      $( "#end_date" ).datepicker({
         dateFormat : 'mm-dd-yy',
        beforeShowDay: disableDates
       });
@@ -24,12 +24,9 @@
 
     var disableDates = function(dt) {
         var dateString = jQuery.datepicker.formatDate('mm-dd-yy', dt);
-        console.log(dateString)
-        console.log(dateRange)
         return [dateRange.indexOf(dateString) == -1];
-
     }
-    console.log(disableDates())
+
   </script>
 </head>
 <body>
@@ -46,8 +43,8 @@
           <p><input placeholder="name" type="name" name="name" required />
           <p><input placeholder="email" type="email" name="email" required />
           <p><input placeholder="number" name="number" required />
-          <p><input placeholder="start date" name="start_date" required />
-          <p><input placeholder="end date" name="end_date" required />
+          <p><input type="text" placeholder="start date" name="start_date" autocomplete="off" id="start_date" required />
+          <p><input tyep="text" placeholder="end date" name="end_date" autocomplete="off" id="end_date" required />
           <p><input class="buttonThree" type="submit" value="Submit" />
         </form></div>
     </body>
