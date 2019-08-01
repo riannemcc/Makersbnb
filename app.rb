@@ -62,7 +62,7 @@ class Makersbnb < Sinatra::Base
   end
 
   post '/list_property' do
-    SiteManager.add_listings(owner_id: session['id'], name: params[:name], description: params[:description], price: params[:price])
+    SiteManager.add_listings(owner_id: session['id'], name: params[:name], description: params[:description], price: params[:price], image: params[:image])
     redirect '/index'
   end
 

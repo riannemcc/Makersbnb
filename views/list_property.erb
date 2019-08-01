@@ -2,17 +2,26 @@
 	<head>
 		<link rel="stylesheet" type="text/css" href="style.css" />
 		<link href="https://fonts.googleapis.com/css?family=Pacifico&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
       <body>
         <div class="myDiv">
 					<div class="bg"></div>
+
+          <div class="topnav">
+  				  <a class="active" href="/">Home</a>
+  				  <a href="/sign_out">Log out</a>
+            <a href="/index">Back</a>
+  				</div>
+
           <h1>List your property</h1>
-      <div align="center">
-        <form action="/list_property" method="post">
-          <p><input type="text" placeholder="property name" name="name"/>
-          <p><input type="textarea" placeholder="description" name="description" />
-          <p><input type="number" placeholder="£ per night" name="price" />
-          <p><input class="buttonThree" type="submit" value="Submit" />
-        </form>
+            <div align="center">
+              <form action="/list_property" method="post">
+                <p><input type="text" placeholder="property name" name="name"/>
+                <p><input type="number" placeholder="£ per night" name="price" />
+                <p><input type="text" placeholder="link to image" name="image" />
+                <p><textarea rows="8" cols="24" name="description" placeholder="Enter description..."></textarea>
+                <p><input class="buttonThree" type="submit" value="Submit" />
+              </form>
       </div>
       </div>
       </body>

@@ -1,5 +1,30 @@
-body{
+.topnav {
+  background-color: #131975;
+  overflow: hidden;
+}
 
+/* Style the links inside the navigation bar */
+.topnav a {
+  float: right;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Change the color of links on hover */
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+/* Add a color to the active/current link */
+.topnav a.active {
+  background-color: #6064a8;
+  color: white;
+  float: left;
 }
 
 h1 {
@@ -50,6 +75,7 @@ h2 {
    top: 10px;
    right: 10px;
    border-radius: 8px;
+   font-family: 'Poppins', sans-serif;
 }
 
 .button:hover {
@@ -66,6 +92,7 @@ h2 {
    /* top: 200px; */
    width: 40%;
    border-radius: 8px;
+   font-family: 'Poppins', sans-serif;
 }
 
 .buttonTwo:hover {
@@ -84,6 +111,7 @@ h2 {
    border-radius: 8px;
    border-color: #33115e;
    border-width: 4px;
+   font-family: 'Poppins', sans-serif;
 }
 
 .buttonThree:hover {
@@ -94,6 +122,21 @@ input {
   /* border: 10px #33115e; */
   border-radius: 4px;
   /* width: 40%; */
-  padding: 10px 28px;
-  font-size: 20px;
+  padding: 10px 26px;
+  font-size: 18px;
+  font-family: 'Poppins', sans-serif;
+}
+
+textarea {
+  border: 1px solid #ccc;
+  margin: 0;
+  padding: 8px;
+  font-size: 18px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.listandard {
+  list-style-type: none;
+  margin: padding: 0;
+  padding: 0;
 }
