@@ -1,3 +1,4 @@
+require 'gon-sinatra'
 require 'sinatra/base'
 require 'sinatra/flash'
 require 'sinatra/redirect_with_flash'
@@ -11,6 +12,7 @@ require 'sinatra/flash'
 class Makersbnb < Sinatra::Base
   enable :sessions
   register Sinatra::Flash
+  register Gon::Sinatra
   helpers Sinatra::RedirectWithFlash
 
   get '/' do
@@ -70,6 +72,8 @@ class Makersbnb < Sinatra::Base
   end
 
   get '/book_property' do
+  @bookings = SiteManager.get_confirmed_booking_requests(id: session['property_id'])
+  gon.bookings = @bookings
     erb :book_property
   end
 
@@ -86,7 +90,7 @@ class Makersbnb < Sinatra::Base
 
   post '/request' do
     session['request_id'] = params[:request_id]
-    p "Request POST #{session['request_id']}"
+    "Request POST #{session['request_id']}"
     redirect '/request'
   end
 

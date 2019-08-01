@@ -1,35 +1,32 @@
 <head>
   <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-  <link rel="stylesheet" href="/resources/demos/style.css">
+  <!-- <link rel="stylesheet" href="/resources/demos/style.css"> -->
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <%= include_gon %>
   <script>
-
-    var startDate = "2019-08-15", 
-    endDate  = "2019-08-21",  
-    dateRange = [];       
-
-
-    for (var d = new Date(startDate); d <= new Date(endDate); d.setDate(d.getDate() + 1)) {
-        dateRange.push($.datepicker.formatDate('yy-mm-dd', d));
-    }
+    var dateRange = []
+    dateRange = gon.bookings
 
     $( function() {
-      $( "#start" ).datepicker({ 
-        dateFormat : 'yy-mm-dd',
+      $( "#start" ).datepicker({
+        dateFormat : 'mm-dd-yy',
        beforeShowDay: disableDates
       });
-      $( "#end" ).datepicker({ 
-        dateFormat : 'yy-mm-dd',
+      $( "#end" ).datepicker({
+        dateFormat : 'mm-dd-yy',
        beforeShowDay: disableDates
       });
     });
-
-
+    
     var disableDates = function(dt) {
-        var dateString = jQuery.datepicker.formatDate('yy-mm-dd', dt);
+        var dateString = jQuery.datepicker.formatDate('mm-dd-yy', dt);
+        console.log(dateString)
+        console.log(dateRange)
         return [dateRange.indexOf(dateString) == -1];
+
     }
+    console.log(disableDates())
   </script>
 </head>
 <h1>Booking Request</h1>
@@ -58,4 +55,3 @@
   <!-- <input type="text" id="dp" /> -->
   <input type="submit" value="Submit" />
 </form>
-

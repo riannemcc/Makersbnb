@@ -5,10 +5,6 @@ require 'date'
 
 class SiteManager
 
-  # def initialize(dbname)
-  #   Database.setup(dbname)
-  # end
-
   def self.add_listings(owner_id:, name:, description:, price:)
     Database.query("INSERT INTO properties (owner_id, property_name, description, price) VALUES('#{owner_id}','#{name}', '#{description}', '#{price}');")
   end
@@ -27,10 +23,22 @@ class SiteManager
 
   def self.add_booking_request(renter_id:, property_id:, start_date:, end_date:)
     pending = 'pending'
-    startdate = Date.strptime(start_date,'%Y-%m-%d')
-    enddate = Date.strptime(end_date,'%Y-%m-%d')
+    startdate = Date.strptime(start_date,'%m-%d-%Y')
+    enddate = Date.strptime(end_date,'%m-%d-%Y')
     owner_id = Database.query("SELECT owner_id FROM properties WHERE id = '#{property_id}';").first['owner_id']
     Database.query("INSERT INTO bookings (approved, owner_id, renter_id, property_id, start_date, end_date) VALUES('#{pending}', '#{owner_id}', '#{renter_id}', '#{property_id}', '#{startdate}', '#{enddate}');")
+  end
+
+  def self.get_confirmed_booking_requests(id:)
+    approved_booking = Database.query("SELECT start_date, end_date FROM bookings WHERE bookings.approved = 'Confirmed' AND property_id = '#{id}';" )
+    range = []
+    bookings = approved_booking.each do |booking|
+      first = booking['start_date']
+      last = booking['end_date']
+      result = (Date.strptime(first, '%Y-%m-%d')..Date.strptime(last, '%Y-%m-%d')).map { |d| d.strftime('%m-%d-%Y') }
+      range << result
+    end
+    range.flatten!
   end
 
   def self.get_renter_booking_requests(id:)
@@ -62,8 +70,14 @@ class SiteManager
 
   def self.update_approval_status(request_id:, response:)
     response = response == "Reject" ? "Rejected" : "Confirmed"
-    request_range = Database.query("UPDATE bookings SET approved = '#{response}' WHERE id = '#{request_id}' RETURNING start_date, end_date;").first
+    request_range = Database.query("UPDATE bookings
+      SET approved = '#{response}'
+      WHERE id = '#{request_id}'
+      RETURNING start_date, end_date;").first
     return if response == "Rejected"
-    Database.query("UPDATE bookings SET approved = 'Rejected' WHERE (id != '#{request_id}' AND (bookings.start_date, bookings.end_date) OVERLAPS (DATE '#{request_range['start_date']}', DATE '#{request_range['end_date']}'));")
+    Database.query("UPDATE bookings
+      SET approved = 'Rejected'
+      WHERE (id != '#{request_id}' AND (bookings.start_date, bookings.end_date)
+      OVERLAPS (DATE '#{request_range['start_date']}', DATE '#{request_range['end_date']}'));")
   end
 end
