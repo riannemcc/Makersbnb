@@ -23,12 +23,9 @@
 
     var disableDates = function(dt) {
         var dateString = jQuery.datepicker.formatDate('mm-dd-yy', dt);
-        console.log(dateString)
-        console.log(dateRange)
         return [dateRange.indexOf(dateString) == -1];
-
     }
-    console.log(disableDates())
+
   </script>
 </head>
 <body>
