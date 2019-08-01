@@ -31,9 +31,9 @@ class SiteManager
   end
 
   def self.get_confirmed_booking_requests(id:)
-    approved_booking = Database.query("SELECT start_date, end_date FROM bookings WHERE bookings.approved = 'Confirmed' AND property_id = '#{id}';" )
+    approved_bookings = Database.query("SELECT start_date, end_date FROM bookings WHERE bookings.approved = 'Confirmed' AND property_id = '#{id}';" )
     range = []
-    bookings = approved_booking.each do |booking|
+    approved_bookings.each do |booking|
       first = booking['start_date']
       last = booking['end_date']
       result = (Date.strptime(first, '%Y-%m-%d')..Date.strptime(last, '%Y-%m-%d')).map { |d| d.strftime('%m-%d-%Y') }
@@ -80,5 +80,16 @@ class SiteManager
       SET approved = 'Rejected'
       WHERE (id != '#{request_id}' AND (bookings.start_date, bookings.end_date)
       OVERLAPS (DATE '#{request_range['start_date']}', DATE '#{request_range['end_date']}'));")
+  end
+
+  def self.get_request_details(request_id:)
+    p d = Database.query("SELECT bookings.start_date, bookings.end_date, properties.property_name, properties.description, properties.price, users.name
+      FROM bookings 
+      INNER JOIN users
+      ON bookings.owner_id = users.id
+      INNER JOIN properties
+      ON bookings.property_id = properties.id
+      WHERE bookings.id = #{request_id};").first
+    d
   end
 end
