@@ -5,6 +5,7 @@ git_source(:github) {|repo_name| "https://github.com/#{repo_name}" }
 ruby '2.6.3'
 
 gem 'capybara'
+gem 'gon-sinatra', '~> 0.1.2'
 gem 'rack'
 gem 'rspec'
 gem 'sinatra'

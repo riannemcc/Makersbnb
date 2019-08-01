@@ -1,3 +1,4 @@
+require 'gon-sinatra'
 require 'sinatra/base'
 require 'sinatra/flash'
 require 'sinatra/redirect_with_flash'
@@ -11,6 +12,7 @@ require 'sinatra/flash'
 class Makersbnb < Sinatra::Base
   enable :sessions
   register Sinatra::Flash
+  register Gon::Sinatra
   helpers Sinatra::RedirectWithFlash
 
   get '/' do
@@ -60,7 +62,7 @@ class Makersbnb < Sinatra::Base
   end
 
   post '/list_property' do
-    SiteManager.add_listings(name: params[:name], description: params[:description], price: params[:price])
+    SiteManager.add_listings(owner_id: session['id'], name: params[:name], description: params[:description], price: params[:price])
     redirect '/index'
   end
 
@@ -70,11 +72,36 @@ class Makersbnb < Sinatra::Base
   end
 
   get '/book_property' do
+  @bookings = SiteManager.get_confirmed_booking_requests(id: session['property_id'])
+  gon.bookings = @bookings
     erb :book_property
   end
 
   post '/book_property' do
-    SiteManager.add_booking_request(property_id: session['property_id'], start_date: params[:start_date], end_date: params[:end_date])
-    redirect '/', notice: 'Booking request submitted!'
+    SiteManager.add_booking_request(renter_id: session['id'], property_id: session['property_id'], start_date: params[:start_date], end_date: params[:end_date])
+    redirect '/index', notice: 'Booking request submitted!'
+  end
+
+  get '/requests' do
+    @renter_requests = SiteManager.get_renter_booking_requests(id: session['id'])
+    @owner_requests = SiteManager.get_owner_booking_requests(id: session['id'])
+    erb :requests
+  end
+
+  post '/request' do
+    session['request_id'] = params[:request_id]
+    "Request POST #{session['request_id']}"
+    redirect '/request'
+  end
+
+  get '/request' do
+    @booking_request = SiteManager.get_owner_booking_requests(id: session['id'], request_id: session[:request_id] ).first
+    @other_requests = SiteManager.get_property_booking_requests(id: session['id'], property_id: @booking_request['property_id'])
+    erb :request
+  end
+
+  post '/handle_request' do
+    SiteManager.update_approval_status(request_id: session['request_id'], response: params[:response])
+    redirect '/requests'
   end
 end
