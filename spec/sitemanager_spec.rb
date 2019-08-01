@@ -21,7 +21,7 @@ describe SiteManager do
   describe '.add_listings' do
     it 'add properties to a list' do
       bob = Database.query("INSERT INTO users (name, email_address, password) VALUES('Hello', 'haha@haha.com', 'abc') RETURNING id;").first
-      site_manager = SiteManager.add_listings(owner_id: bob['id'], name: "Hello", description: "Haha", price: "1000")
+      site_manager = SiteManager.add_listings(owner_id: bob['id'], name: "Hello", description: "Haha", price: "1000", image: '')
 
       properties = Database.query("SELECT * FROM properties;")
 
@@ -34,7 +34,7 @@ describe SiteManager do
   describe '.add_bookings' do
     it 'adds bookings to the database' do
       bob = Database.query("INSERT INTO users (name, email_address, password) VALUES('Hello', 'haha@haha.com', 'abc') RETURNING id;").first
-      property_id = SiteManager.add_listings(owner_id: bob['id'], name: "Hello", description: "Haha", price: "1000")
+      property_id = SiteManager.add_listings(owner_id: bob['id'], name: "Hello", description: "Haha", price: "1000", image: '')
       site_manager = SiteManager.add_booking_request(renter_id: bob['id'], property_id: property_id.first['id'], start_date: "08-01-2019", end_date: "08-29-2019")
 
       bookings = Database.query("SELECT * FROM bookings;")
@@ -47,7 +47,7 @@ describe SiteManager do
   describe '.get_property_booking_requests' do
     it 'returns booking requests for property' do
       bob = Database.query("INSERT INTO users (name, email_address, password) VALUES('Hello', 'haha@haha.com', 'abc') RETURNING id;").first
-      property_id = SiteManager.add_listings(owner_id: bob['id'], name: "Hello", description: "Haha", price: "1000")
+      property_id = SiteManager.add_listings(owner_id: bob['id'], name: "Hello", description: "Haha", price: "1000", image: '')
       site_manager = SiteManager.add_booking_request(renter_id: bob['id'], property_id: property_id.first['id'], start_date: "08-01-2019", end_date: "08-29-2019")
 
       bookings = SiteManager.get_property_booking_requests(id: bob['id'], property_id: property_id.first['id'])

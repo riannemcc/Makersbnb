@@ -72,9 +72,8 @@ class Makersbnb < Sinatra::Base
   end
 
   get '/book_property' do
-    p session['property_id']
-  gon.bookings = SiteManager.get_confirmed_booking_requests(id: session['property_id'])
-  p " gon: #{gon.bookings}"
+    session['property_id']
+    gon.bookings = SiteManager.get_confirmed_booking_requests(id: session['property_id'])
     erb :book_property
   end
 

@@ -60,7 +60,6 @@ class SiteManager
 
   def self.get_owner_booking_requests(id:, request_id: '')
     request_filter = request_id == '' ? '' : " AND bookings.id = '#{request_id}'"
-    p "#{id} #{request_filter}"
       Database.query("SELECT users.name, users.email_address, bookings.id AS booking_id, properties.id AS property_id, properties.property_name, to_char(bookings.start_date::timestamp, 'DD-MM-YYYY') AS start_date, to_char(bookings.end_date::timestamp, 'DD-MM-YYYY') AS end_date, bookings.approved FROM bookings
       INNER JOIN users
       ON bookings.renter_id = users.id
@@ -92,13 +91,13 @@ class SiteManager
   end
 
   def self.get_request_details(request_id:)
-    p d = Database.query("SELECT properties.image, bookings.start_date, bookings.end_date, properties.property_name, properties.description, properties.price, users.name
+    Database.query("SELECT properties.image, bookings.start_date, bookings.end_date, properties.property_name, properties.description, properties.price, users.name
       FROM bookings
       INNER JOIN users
       ON bookings.owner_id = users.id
       INNER JOIN properties
       ON bookings.property_id = properties.id
       WHERE bookings.id = #{request_id};").first
-    d
+
   end
 end
