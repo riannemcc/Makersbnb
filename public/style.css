@@ -1,5 +1,5 @@
 .topnav {
-  background-color: #131975;
+  background-color: #2d6996;
   overflow: hidden;
 }
 
@@ -19,7 +19,7 @@
 }
 
 .topnav a.active {
-  background-color: #6064a8;
+  background-color: #57a1d9;
   color: white;
   float: left;
 }
@@ -32,7 +32,7 @@ h1 {
 }
 
 h2 {
-  font-size: 40px;
+  font-size: 38px;
   font-family: 'Pacifico', cursive;
   text-align: center;
   color: #29384f;
@@ -40,7 +40,7 @@ h2 {
 }
 
 h3 {
-  font-size: 30px;
+  font-size: 24px;
   font-family: 'Poppins', sans-serif;
   text-align: center;
   color: #29384f;
@@ -60,7 +60,7 @@ h4 {
 }
 
 .myDiv .bg {
-    position: absolute;
+    position: fixed;
     z-index: -1;
     top: 0;
     bottom: 0;
@@ -73,7 +73,9 @@ h4 {
     background-repeat: repeat;
     background-size: cover;
     height: auto;
-    max-width: 100%;
+    width: 100%;
+    height: auto;
+    min-width: 1024px;
 }
 
 .button {
@@ -90,7 +92,7 @@ h4 {
 }
 
 .button:hover {
-  background-color: #2b6c78;
+  background-color: #57a1d9;
 }
 
 .buttonTwo {
@@ -105,16 +107,16 @@ h4 {
 }
 
 .buttonTwo:hover {
-  background-color: #2b6c78;
+  background-color: #57a1d9;
 }
 
 .buttonThree {
    padding: 6px 6px;
-   display:block;
+   display:inline;
    background-color: #daf2f5;
    color: #292c30;
    text-align: center;
-   width: 16%;
+   width: 18%;
    border-radius: 8px;
    border-color: #33115e;
    border-width: 4px;
@@ -122,7 +124,7 @@ h4 {
 }
 
 .buttonThree:hover {
-  background-color: #2b6c78;
+  background-color: #57a1d9;
 }
 
 input {
@@ -225,4 +227,7 @@ img {
    width: 70px;
    height: 70px;
    overflow: hidden;
+   margin-top: -25px;
+   margin-bottom: -20px;
+   float: left;
 }
