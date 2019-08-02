@@ -11,10 +11,14 @@
           <div class="bg"></div>
 
           <div class="topnav">
-  				  <a class="active" href="/">Home</a>
+  				  <a class="active" href="/index">Home</a>
+              <!-- <div class="logo-image">
+                <img src="file:///Users/riannemccartney/Downloads/snakebnb.png)" class="img-fluid">
+              </div> -->
   				  <a href="/sign_out">Log out</a>
             <a href="/requests">See booking requests</a>
   				</div>
+
           <div>
             <h1>Welcome to Crouching Python B'n'B</h1>
           </div>
@@ -31,13 +35,15 @@
                 <div id="property-image">
                   <img src="<%= property.image %>">
                 </div>
+                <br>
+                <br>
                 <div id="space-footer">
                   <h2><%= "#{ property.name }" %></h2>
                   <span id="description">
                     <h3><%= "#{ property.description }" %></span><p><h3>
                   <form action="/book_page_request" method="post">
                     <input type="hidden" name="property_id" value="<%= property.id %>">
-                    <center><input type="submit" value="View"/>
+                    <center><input type="submit" value="Book"/>
                   </form>
                   <br>
                 </div>
