@@ -97,7 +97,6 @@ class SiteManager
       ON bookings.owner_id = users.id
       INNER JOIN properties
       ON bookings.property_id = properties.id
-      WHERE bookings.id = #{request_id};").first
-
+      WHERE bookings.property_id = #{request_id};").first
   end
 end
