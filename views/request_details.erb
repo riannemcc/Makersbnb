@@ -1,10 +1,29 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+      <link rel="stylesheet" type="text/css" href="style.css" />
+      <link href="https://fonts.googleapis.com/css?family=Pacifico&display=swap" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
+    </head>
+      <body>
+          <div class="myDiv">
+            <div class="bg"></div>
+
+            <div class="topnav">
+              <a class="active" href="/index">Home</a>
+              <a href="/sign_out">Log out</a>
+              <a href="/requests">Back</a>
+            </div>
+<body>
 <h1>Request Details</h1>
 
-<body>
-  <h3>Property Name:<%= @booking_request['property_name'] %></h3>
+<center><div id="list-element"
+  <p><h3><%= @booking_request['property_name'] %></h3>
   <p>
-  Dates Requested:
+  <h4>Dates Requested:
   <%= @booking_request['start_date'] %> to <%= @booking_request['end_date'] %>
+<<<<<<< HEAD
 </p>
 <p>
 Location:
@@ -18,8 +37,21 @@ Location:
   Price:
   <%= @booking_request['price'] %>
 </p>
+=======
+
+  <p><%= @booking_request['description'] %>
+	<p>Price:
+  <%= @booking_request['price'] %> per night
+</h4>
+>>>>>>> 8a7ca3982400409758b4517c3522150788edfe16
   <p>
   <img src="<%= @booking_request['image'] %>">
 </p>
   <a href="/requests.erb" >
+<<<<<<< HEAD
 </body>
+=======
+  </div>
+</body>
+</html>
+>>>>>>> 8a7ca3982400409758b4517c3522150788edfe16

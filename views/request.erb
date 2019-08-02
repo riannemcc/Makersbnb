@@ -7,32 +7,33 @@
       <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
     </head>
       <body>
-        <h1>Manage Request</h1>
+          <div class="myDiv">
+            <div class="bg"></div>
 
-<body>
-  <div class="myDiv">
-    <div class="bg"></div>
+            <div class="topnav">
+              <a class="active" href="/index">Home</a>
+              <a href="/sign_out">Log out</a>
+              <a href="/requests">Back</a>
+            </div>
 
-    <div class="topnav">
-      <a class="active" href="/">Home</a>
-      <a href="/sign_out">Log out</a>
-      <a href="/index">Back</a>
+            <h1>Manage Requests</h1>
+
+    <center><div id="list-element">
+      <p><h3>Request From :    <%= @booking_request['name'] %></h3>
+      <p><h3>Dates Requested :
+      <p><%= @booking_request['start_date'] %> to <%= @booking_request['end_date'] %></h3>
     </div>
 
-    Request From:<%= @booking_request['name'] %>
-      Dates Requested:
-      <%= @booking_request['start_date'] %> to <%= @booking_request['end_date'] %>
-
-      Other Requests for this Property:
+      <center><div id="list-element">
+        <p><h3>Other Requests for this Property:</h3>
       <ul>
       <% @other_requests.each do |request| %>
-      <li id="<%= request['id'] %>">
+        <li class="listandard" id="<%= request['id'] %>">
       <form action="/request" method="post">
         <input type="hidden" name="request_id" value="<%= request['id'] %>">
         <input type="submit" value="
         <%= request['property_name'] %>
-        <%= request['start_date'] %>
-        <%= request['end_date'] %>
+        <%= request['start_date'] %>  to  <%= request['end_date'] %>
         ">
         </form>
       </li>
@@ -40,8 +41,9 @@
       </ul>
 
       <form action="/handle_request" method="post">
-        <input type="submit" value="Confirm" name="response" />
-        <input type="submit" value="Reject" name="response" />
+        <input class="buttonThree" type="submit" value="Confirm" name="response" />
+        <p><input class="buttonThree" type="submit" value="Reject" name="response" />
       </form>
+      </div>
     </div>
 </body>
