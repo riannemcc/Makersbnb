@@ -1,10 +1,8 @@
 .topnav {
   background-color: #131975;
-  background-image: url("file:///Users/riannemccartney/Downloads/snakebnb.png")
   overflow: hidden;
 }
 
-/* Style the links inside the navigation bar */
 .topnav a {
   float: right;
   color: #f2f2f2;
@@ -15,29 +13,22 @@
   font-family: 'Poppins', sans-serif;
 }
 
-/* Change the color of links on hover */
 .topnav a:hover {
   background-color: #ddd;
   color: black;
 }
 
-/* Add a color to the active/current link */
 .topnav a.active {
   background-color: #6064a8;
   color: white;
   float: left;
 }
 
-/* body{
-  overflow: hidden;
-} */
-
 h1 {
   font-size: 50px;
   font-family: 'Pacifico', cursive;
   text-align: center;
   color: #29384f;
-  /* position: relative; */
 }
 
 h2 {
@@ -65,7 +56,6 @@ h4 {
 }
 
 .myDiv {
-    /* position: absolute; */
     z-index: 1;
 }
 
@@ -78,8 +68,6 @@ h4 {
     right: 0;
     background: url(https://cdn.pixabay.com/photo/2016/07/21/10/27/maldives-1532172_960_720.jpg) center center;
     opacity: .6;
-    /* width: 600px;
-    height: 600px; */
     background-position: center;
     background-attachment: inherit;
     background-repeat: repeat;
@@ -111,8 +99,6 @@ h4 {
    background-color: #daf2f5;
    color: #292c30;
    text-align:center;
-   /* position: absolute; */
-   /* top: 200px; */
    width: 40%;
    border-radius: 8px;
    font-family: 'Poppins', sans-serif;
@@ -128,8 +114,6 @@ h4 {
    background-color: #daf2f5;
    color: #292c30;
    text-align: center;
-   /* position: absolute; */
-   /* top: 200px; */
    width: 16%;
    border-radius: 8px;
    border-color: #33115e;
@@ -228,7 +212,7 @@ img {
 }
 
 .container {
-  display:inline-block;
+  display: inline-block;
   width: 50%;
 }
 
@@ -238,9 +222,7 @@ img {
 }
 
 .logo-image{
-   width: 46px;
-   height: 46px;
-   border-radius: 50%;
+   width: 70px;
+   height: 70px;
    overflow: hidden;
-   margin-top: -6px;
 }
