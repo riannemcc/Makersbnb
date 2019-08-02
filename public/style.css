@@ -1,5 +1,7 @@
 .topnav {
   background-color: #131975;
+  background-image: url("file:///Users/riannemccartney/Downloads/snakebnb.png")
+  display: inline;
   overflow: hidden;
 }
 
@@ -234,4 +236,12 @@ img {
 .container-two {
   float: right;
   width: 50%;
+}
+
+.logo-image{
+   width: 46px;
+   height: 46px;
+   border-radius: 50%;
+   overflow: hidden;
+   margin-top: -6px;
 }

@@ -42,7 +42,7 @@
 <div class="container-two">
         <h1>Renter Requests</h1>
         <center><div id="list-element-two">
-          <% @owner_requests.each do |request| %>
+          <% @renter_requests.each do |request| %>
             <center><div id="<%= request['id'] %>">
               <div id="space-footer">
                 <h3><%= request['property_name'] %></h3>
@@ -50,7 +50,7 @@
                   <h4><%= request['start_date'] %> to
                   <%= request['end_date'] %></h4></span>
                   <p><font color="#c91aaf"><h4><%= request['approved'] %></h4></font>
-                <form action="/request" method="post">
+                <form action="/request_details" method="post">
                   <input type="hidden" name="request_id" value="<%= request['id'] %>">
                   <center><input class="buttonThree" type="submit" value="View">
                 </form>
