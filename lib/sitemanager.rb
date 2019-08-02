@@ -95,13 +95,15 @@ class SiteManager
   end
 
   def self.get_request_details(request_id:)
-    Database.query("SELECT properties.image, bookings.start_date, bookings.end_date, properties.property_name, properties.description, properties.price, properties.location, users.name
+      result = Database.query("SELECT properties.image, properties.location, bookings.start_date, bookings.end_date, properties.property_name, properties.description, properties.price, properties.location, users.name
       FROM bookings
       INNER JOIN users
       ON bookings.owner_id = users.id
       INNER JOIN properties
       ON bookings.property_id = properties.id
       WHERE bookings.property_id = #{request_id};").first
+      result['weather'] = self.get_weather(result['location'])
+      result
   end
 
   def self.get_weather(location)

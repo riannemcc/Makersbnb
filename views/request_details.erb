@@ -23,8 +23,6 @@
   <p>
   <h4>Dates Requested:
   <%= @booking_request['start_date'] %> to <%= @booking_request['end_date'] %>
-<<<<<<< HEAD
-</p>
 <p>
 Location:
 <%= @booking_request['location'] %>
@@ -33,25 +31,16 @@ Location:
   Description:
   <%= @booking_request['description'] %>
 </p>
-	<p>
-  Price:
-  <%= @booking_request['price'] %>
-</p>
-=======
-
-  <p><%= @booking_request['description'] %>
 	<p>Price:
   <%= @booking_request['price'] %> per night
+  <p>
+  Current Local Temperature: <%= @booking_request['weather'] %>
 </h4>
->>>>>>> 8a7ca3982400409758b4517c3522150788edfe16
   <p>
   <img src="<%= @booking_request['image'] %>">
 </p>
   <a href="/requests.erb" >
-<<<<<<< HEAD
 </body>
-=======
   </div>
 </body>
 </html>
->>>>>>> 8a7ca3982400409758b4517c3522150788edfe16

@@ -112,6 +112,7 @@ class Makersbnb < Sinatra::Base
 
   get '/request_details' do
   @booking_request = SiteManager.get_request_details(request_id: session['request_id'])
+  
     erb :request_details
   end
 
