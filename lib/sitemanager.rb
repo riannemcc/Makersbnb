@@ -1,11 +1,13 @@
 require_relative 'property'
 require_relative 'user'
 require_relative 'database'
+require_relative 'weather'
 require 'date'
+require 'json'
 
 class SiteManager
 
-  def self.add_listings(owner_id:, name:, description:, price:, image:)
+  def self.add_listings(owner_id:, name:, description:, price:, image:, location:)
     if name.include?("'")
       index = name.index("'")
       name.insert(index,"'")
@@ -15,7 +17,7 @@ class SiteManager
       index = description.index("'")
       description.insert(index,"'")
     end
-    Database.query("INSERT INTO properties (owner_id, property_name, description, price, image) VALUES('#{owner_id}','#{name}', '#{description}', '#{price}', '#{image}') RETURNING id;")
+    Database.query("INSERT INTO properties (owner_id, property_name, description, price, image, location) VALUES('#{owner_id}','#{name}', '#{description}', '#{price}', '#{image}', '#{location}') RETURNING id;")
   end
 
   def self.get_available_listings
@@ -26,7 +28,9 @@ class SiteManager
         property['property_name'],
         property['description'],
         property['price'],
-        property['image']
+        property['image'],
+        property['location'],
+        self.get_weather(property['location'])
       )
     }
   end
@@ -91,7 +95,7 @@ class SiteManager
   end
 
   def self.get_request_details(request_id:)
-    Database.query("SELECT properties.image, bookings.start_date, bookings.end_date, properties.property_name, properties.description, properties.price, users.name
+    Database.query("SELECT properties.image, bookings.start_date, bookings.end_date, properties.property_name, properties.description, properties.price, properties.location, users.name
       FROM bookings
       INNER JOIN users
       ON bookings.owner_id = users.id
@@ -99,4 +103,12 @@ class SiteManager
       ON bookings.property_id = properties.id
       WHERE bookings.property_id = #{request_id};").first
   end
+
+  def self.get_weather(location)
+    weather = Weather.get_weather_for_location(location)
+    return "Cannot return temperature - City not found" if weather['message'] == "city not found"
+    temp = "#{weather['main']['temp'].round}°C"
+  end
+
+
 end

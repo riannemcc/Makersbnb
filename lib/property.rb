@@ -1,20 +1,16 @@
 
 class Property
 
-  attr_reader :id, :name, :description, :price, :image
+  attr_reader :id, :name, :description, :price, :image, :location, :weather
 
-  def initialize(id, name, description, price, image)
+  def initialize(id, name, description, price, image, location, weather)
     @id = id
     @name = name
     @description = description
     @price = price
-    @available = true
     @image = image
+    @location = location
+    @weather = weather
   end
-
-  def available?
-    true
-  end
-
 
 end

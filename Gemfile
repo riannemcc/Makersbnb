@@ -22,3 +22,11 @@ gem "sinatra-flash", "~> 0.3.0"
 gem "sinatra-redirect-with-flash", "~> 0.2.1"
 
 gem "rack-flash3", "~> 1.0"
+
+# gem 'open-weather-api'
+
+gem 'open-weather'
+
+gem 'json'
+
+gem 'httparty'

@@ -7,6 +7,7 @@ require_relative './lib/sitemanager.rb'
 require_relative './lib/database_setup'
 require_relative './lib/user.rb'
 require 'sinatra/flash'
+require 'json'
 
 
 class Makersbnb < Sinatra::Base
@@ -62,7 +63,7 @@ class Makersbnb < Sinatra::Base
   end
 
   post '/list_property' do
-    SiteManager.add_listings(owner_id: session['id'], name: params[:name], description: params[:description], price: params[:price], image: params[:image])
+    SiteManager.add_listings(owner_id: session['id'], name: params[:name], description: params[:description], price: params[:price], image: params[:image], location: params[:location])
     redirect '/index'
   end
 
@@ -113,4 +114,5 @@ class Makersbnb < Sinatra::Base
   @booking_request = SiteManager.get_request_details(request_id: session['request_id'])
     erb :request_details
   end
+
 end
