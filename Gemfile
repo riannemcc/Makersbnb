@@ -23,7 +23,7 @@ gem "sinatra-redirect-with-flash", "~> 0.2.1"
 
 gem "rack-flash3", "~> 1.0"
 
-# gem 'open-weather-api'
+gem 'bundler'
 
 gem 'open-weather'
 
