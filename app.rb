@@ -1,4 +1,5 @@
 require 'gon-sinatra'
+require 'sinatra'
 require 'sinatra/base'
 require 'sinatra/flash'
 require 'sinatra/redirect_with_flash'
@@ -112,7 +113,7 @@ class Makersbnb < Sinatra::Base
 
   get '/request_details' do
   @booking_request = SiteManager.get_request_details(request_id: session['request_id'])
-  
+
     erb :request_details
   end
 
