@@ -1,5 +1,8 @@
 require_relative "./app"
 require 'rubygems'
 require 'sinatra'
+require 'bundler'
 
-run Sinatra::Application
+Bundler.require
+
+run Makersbnb
