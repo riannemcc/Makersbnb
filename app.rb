@@ -1,4 +1,3 @@
-require 'heroku'
 require 'gon-sinatra'
 require 'sinatra'
 require 'sinatra/base'
