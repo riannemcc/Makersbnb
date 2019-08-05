@@ -4,7 +4,8 @@ require 'pg'
 class Database
 
   def self.setup(dbname)
-    @connection = PG.connect(dbname: dbname)
+    uri = URI.parse(ENV['DATABASE_URL'])
+    @connection = PG.connect(uri)
   end
 
   def self.connection
