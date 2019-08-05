@@ -1,4 +1,4 @@
-require_relative "./app"
+require_relative "./app/app"
 require 'rubygems'
 require 'sinatra'
 require 'bundler'
