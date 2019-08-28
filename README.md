@@ -3,6 +3,15 @@
 
 [Link to the app on Heroku](https://snakebnb.herokuapp.com/index)
 
+We were free to choose our technology and used the following:
+ - Ruby
+ - Sinatra
+ - PostgreSQL
+ - RSpec
+ - Capybara
+ 
+ We also used a weather API to determine the weather in each B'n'B location. 
+
 ### Headline specifications
 - Any signed-up user can list a new space.
 - Users can list multiple spaces.
@@ -16,9 +25,10 @@
 ![Imgur](https://imgur.com/rEKMcCD.jpg)
 ![Imgur](https://imgur.com/8ANqIs8.jpg)
 ![Imgur](https://imgur.com/7Q9d45N.jpg)
+![Imgur](https://imgur.com/JpyCvnW.jpg)
 
 ### Initial planning session
-We divided up our user stories and then ranked them by order of importance.
+We divided up our user stories and then ranked them by order of importance. 
 ![Imgur](https://i.imgur.com/hxT2G5Y.jpg)
 
 ## User Stories
